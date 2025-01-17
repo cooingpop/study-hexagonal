@@ -1,6 +1,6 @@
 package com.example.study_hexagonal.infrastructure.config;
 
-import com.example.study_hexagonal.infrastructure.adapter.in.interceptor.LoggingInterceptor;
+import com.example.study_hexagonal.infrastructure.adapter.in.web.interceptor.LoggingInterceptor;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.*;
 
@@ -14,13 +14,13 @@ public class WebConfiguration implements WebMvcConfigurer {
                 .allowedMethods("GET", "POST", "PUT", "DELETE")
                 .allowedHeaders("*")
                 .allowCredentials(true);
-    }
+}
 
-    @Override
-    public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        registry.addResourceHandler("/static/**")
-                .addResourceLocations("classpath:/static/");
-    }
+@Override
+public void addResourceHandlers(ResourceHandlerRegistry registry) {
+    registry.addResourceHandler("/static/**")
+            .addResourceLocations("classpath:/static/");
+}
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {

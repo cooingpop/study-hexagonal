@@ -1,13 +1,8 @@
-package com.example.study_hexagonal.infrastructure.adapter.in.web.view;
+package com.example.study_hexagonal.infrastructure.adapter.in.web.customer.api.view;
 
-import com.example.study_hexagonal.application.account.port.in.DepositUseCase;
-import com.example.study_hexagonal.application.account.port.in.WithdrawUseCase;
-import com.example.study_hexagonal.domain.account.Money;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
-import java.math.BigDecimal;
 
 @Controller
 @RequestMapping("/customers")

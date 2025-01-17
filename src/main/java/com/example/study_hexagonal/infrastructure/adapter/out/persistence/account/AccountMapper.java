@@ -1,4 +1,4 @@
-package com.example.study_hexagonal.infrastructure.adapter.out.persistence;
+package com.example.study_hexagonal.infrastructure.adapter.out.persistence.account;
 
 import com.example.study_hexagonal.domain.account.Account;
 import org.apache.ibatis.annotations.Mapper;

@@ -1,4 +1,4 @@
-package com.example.study_hexagonal.infrastructure.adapter.in.web.api;
+package com.example.study_hexagonal.infrastructure.adapter.in.web.account.api;
 
 import com.example.study_hexagonal.application.account.port.in.DepositUseCase;
 import com.example.study_hexagonal.application.account.port.in.WithdrawUseCase;

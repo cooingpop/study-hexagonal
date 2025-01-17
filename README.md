@@ -16,6 +16,7 @@
 
 ## 프로젝트 구조
 ```
+
 com.example.study_hexagonal
 ├── domain
 │   ├── account
@@ -25,39 +26,69 @@ com.example.study_hexagonal
 │       ├── Customer.java
 │       └── CustomerInfo.java
 ├── application
-│   ├── port
-│   │   ├── in
-│   │   │   ├── AccountUseCase.java
-│   │   │   ├── DepositUseCase.java
-│   │   │   └── WithdrawUseCase.java
-│   │   └── out
-│   │       ├── LoadAccountPort.java
-│   │       └── SaveAccountPort.java
-│   └── usecase
-│       ├── AccountUseCaseImpl.java
-│       ├── DepositUseCaseImpl.java
-│       └── WithdrawUseCaseImpl.java
+│   ├── account
+│   │   ├── port
+│   │   │   ├── in
+│   │   │   │   ├── DepositUseCase.java
+│   │   │   │   └── WithdrawUseCase.java
+│   │   │   └── out
+│   │   │       ├── LoadAccountPort.java
+│   │   │       └── SaveAccountPort.java
+│   │   └── usecase
+│   │       ├── AccountUseCaseImpl.java
+│   │       ├── DepositUseCaseImpl.java
+│   │       └── WithdrawUseCaseImpl.java
+│   └── customer
+│       ├── port
+│       │   ├── in
+│       │   │   ├── CreateCustomerUseCase.java
+│       │   │   └── GetCustomerUseCase.java
+│       │   └── out
+│       │       ├── LoadCustomerPort.java
+│       │       └── SaveCustomerPort.java
+│       └── usecase
+│           ├── CreateCustomerUseCaseImpl.java
+│           └── GetCustomerUseCaseImpl.java
 └── infrastructure
     ├── adapter
     │   ├── in
     │   │   └── web
-    │   │       ├── api
-    │   │       │   ├── AccountApiController.java
-    │   │       │   └── dto
-    │   │       │       ├── AccountRequestDto.java
-    │   │       │       └── AccountResponseDto.java
-    │   │       └── view
-    │   │           └── AccountViewController.java
+    │   │       ├── account
+    │   │       │   ├── api
+    │   │       │   │   ├── dto
+    │   │       │   │   │   ├── AccountRequestDto.java
+    │   │       │   │   │   └── AccountResponseDto.java
+    │   │       │   │   ├── view
+    │   │       │   │   │   └── AccountViewModel.java
+    │   │       │   │   └── AccountApiController.java
+    │   │       │   └── view
+    │   │       │       └── AccountViewController.java
+    │   │       ├── customer
+    │   │       │   ├── api
+    │   │       │   │   ├── dto
+    │   │       │   │   │   ├── CustomerRequestDto.java
+    │   │       │   │   │   └── CustomerResponseDto.java
+    │   │       │   │   ├── view
+    │   │       │   │   │   └── CustomerViewModel.java
+    │   │       │   │   └── CustomerApiController.java
+    │   │       │   └── view
+    │   │       │       └── CustomerViewController.java
+    │   │       └── interceptor
+    │   │           ├── LoggingInterceptor.java
+    │   │           └── AuthenticationInterceptor.java
     │   └── out
     │       ├── persistence
-    │       │   └── AccountPersistenceAdapter.java
+    │       │   ├── account
+    │       │   │   └── AccountPersistenceAdapter.java
+    │       │   └── customer
+    │       │       └── CustomerPersistenceAdapter.java
     │       └── cache
-    │           └── AccountCacheAdapter.java
+    │           └── account
+    │               └── AccountCacheAdapter.java
     └── config
         ├── WebConfig.java
-        └── MyBatisConfig.java
-
-
+        └── PersistenceConfig.java
+        
 ```
 
 ## 패키지 설명

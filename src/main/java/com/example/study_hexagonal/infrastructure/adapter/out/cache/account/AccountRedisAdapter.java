@@ -1,4 +1,4 @@
-package com.example.study_hexagonal.infrastructure.adapter.out.cache;
+package com.example.study_hexagonal.infrastructure.adapter.out.cache.account;
 
 import com.example.study_hexagonal.domain.account.Account;
 import org.springframework.data.redis.core.RedisTemplate;

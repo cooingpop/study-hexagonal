@@ -18,6 +18,6 @@ public class AccountUseCaseImpl implements AccountUseCase {
     public void complexAccountOperation(String accountId, Money amount) {
         // 복잡한 비즈니스 로직 구현
         depositUseCase.deposit(accountId, amount);
-        withdrawUseCase.withdraw(accountId, amount.divide(2));
+        withdrawUseCase.withdraw(accountId, amount.subtract(amount));
     }
 }

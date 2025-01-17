@@ -1,4 +1,4 @@
-package com.example.study_hexagonal.application.customer.usecase;
+package com.example.study_hexagonal.application.customer.port.in;
 
 import com.example.study_hexagonal.domain.customer.Customer;
 import com.example.study_hexagonal.domain.customer.CustomerInfo;

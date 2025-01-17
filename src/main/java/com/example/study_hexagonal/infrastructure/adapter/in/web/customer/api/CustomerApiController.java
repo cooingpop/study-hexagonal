@@ -1,12 +1,13 @@
-package com.example.study_hexagonal.infrastructure.adapter.in.web.api;
+package com.example.study_hexagonal.infrastructure.adapter.in.web.customer.api;
 
-import com.example.study_hexagonal.application.account.port.in.DepositUseCase;
-import com.example.study_hexagonal.application.account.port.in.WithdrawUseCase;
-import com.example.study_hexagonal.application.customer.usecase.CreateCustomerUseCase;
-import com.example.study_hexagonal.domain.account.Money;
+import com.example.study_hexagonal.application.customer.port.in.CreateCustomerUseCase;
+import com.example.study_hexagonal.application.customer.port.in.GetCustomerUseCase;
+import com.example.study_hexagonal.domain.customer.Customer;
+import com.example.study_hexagonal.domain.customer.CustomerInfo;
+import com.example.study_hexagonal.infrastructure.adapter.in.web.customer.api.dto.CustomerRequestDto;
+import com.example.study_hexagonal.infrastructure.adapter.in.web.customer.api.dto.CustomerResponseDto;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.math.BigDecimal;
 
 @RestController
 @RequestMapping("/api/customers")
@@ -28,7 +29,7 @@ public class CustomerApiController {
 
     @GetMapping("/{customerId}")
     public ResponseEntity<CustomerResponseDto> getCustomer(@PathVariable String customerId) {
-        Customer customer = getCustomerUseCase.getCustomer(customerId);
+        Customer customer = getCustomerUseCase.getCustomerById(customerId);
         return ResponseEntity.ok(mapToResponseDto(customer));
     }
 
