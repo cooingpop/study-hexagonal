@@ -14,6 +14,15 @@
 - 확장성: 새로운 기능 추가 시 기존 구조를 쉽게 확장 가능
 - 도메인 중심 개발: 비즈니스 로직에 집중할 수 있는 환경 제공
 
+```
+domain 패키지를 application 패키지와 같은 레벨로 이동시키는 것이 좋습니다. 그 이유는 다음과 같습니다:
+
+도메인 중심성: 도메인 모델은 애플리케이션의 핵심이며, 다른 레이어에 의존하지 않아야 합니다. 
+따라서 최상위 레벨에 위치하는 것이 적절합니다.
+의존성 방향: application 레이어가 domain 레이어에 의존해야 하며, 그 반대가 되어서는 안 됩니다. 
+독립성: domain 패키지를 최상위 레벨에 두면, 도메인 모델의 독립성과 재사용성이 향상됩니다.
+```
+
 ## 프로젝트 구조
 ```
 
@@ -63,19 +72,16 @@ com.example.study_hexagonal
     │   │       │   │   └── AccountApiController.java
     │   │       │   └── view
     │   │       │       └── AccountViewController.java
-    │   │       ├── customer
-    │   │       │   ├── api
-    │   │       │   │   ├── dto
-    │   │       │   │   │   ├── CustomerRequestDto.java
-    │   │       │   │   │   └── CustomerResponseDto.java
-    │   │       │   │   ├── view
-    │   │       │   │   │   └── CustomerViewModel.java
-    │   │       │   │   └── CustomerApiController.java
-    │   │       │   └── view
-    │   │       │       └── CustomerViewController.java
-    │   │       └── interceptor
-    │   │           ├── LoggingInterceptor.java
-    │   │           └── AuthenticationInterceptor.java
+    │   │       └── customer
+    │   │           ├── api
+    │   │           │   ├── dto
+    │   │           │   │   ├── CustomerRequestDto.java
+    │   │           │   │   └── CustomerResponseDto.java
+    │   │           │   ├── view
+    │   │           │   │   └── CustomerViewModel.java
+    │   │           │   └── CustomerApiController.java
+    │   │           └── view
+    │   │               └── CustomerViewController.java
     │   └── out
     │       ├── persistence
     │       │   ├── account
@@ -87,8 +93,12 @@ com.example.study_hexagonal
     │               └── AccountCacheAdapter.java
     └── config
         ├── WebConfig.java
-        └── PersistenceConfig.java
-        
+        ├── PersistenceConfig.java
+        └── interceptor
+            ├── LoggingInterceptor.java
+            └── AuthenticationInterceptor.java
+
+
 ```
 
 ## 패키지 설명
@@ -125,7 +135,7 @@ com.example.study_hexagonal
 
 ### domain 패키지:
 > 다른 패키지에 의존하지 않습니다.
-순수한 Java 코드만으로 구성됩니다.
+
 
 ### application 패키지:
 > domain 패키지에 의존합니다.

@@ -1,11 +1,17 @@
 package com.example.study_hexagonal.infrastructure.config;
 
-import com.example.study_hexagonal.infrastructure.adapter.in.web.interceptor.LoggingInterceptor;
+import com.example.study_hexagonal.infrastructure.config.interceptor.LoggingInterceptor;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.*;
 
 @Configuration
 public class WebConfiguration implements WebMvcConfigurer {
+
+    private final LoggingInterceptor loggingInterceptor;
+
+    public WebConfiguration(LoggingInterceptor loggingInterceptor) {
+        this.loggingInterceptor = loggingInterceptor;
+    }
 
     @Override
     public void addCorsMappings(CorsRegistry registry) {
@@ -24,7 +30,7 @@ public void addResourceHandlers(ResourceHandlerRegistry registry) {
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(new LoggingInterceptor())
+        registry.addInterceptor(loggingInterceptor)
                 .addPathPatterns("/**")
                 .excludePathPatterns("/admin/**");
     }
