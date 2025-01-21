@@ -1,5 +1,9 @@
 package com.example.study_hexagonal.infrastructure.adapter.in.web.customer.api.view;
 
+import com.example.study_hexagonal.application.customer.port.in.CreateCustomerUseCase;
+import com.example.study_hexagonal.application.customer.port.in.GetCustomerUseCase;
+import com.example.study_hexagonal.domain.customer.Customer;
+import com.example.study_hexagonal.domain.customer.CustomerInfo;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -30,7 +34,7 @@ public class CustomerViewController {
 
     @GetMapping("/{customerId}")
     public String showCustomerDetails(@PathVariable String customerId, Model model) {
-        Customer customer = getCustomerUseCase.getCustomer(customerId);
+        Customer customer = getCustomerUseCase.getCustomerById(customerId);
         model.addAttribute("customer", customer);
         return "customer/details";
     }
